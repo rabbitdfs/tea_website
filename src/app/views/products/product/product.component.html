@@ -1,0 +1,22 @@
+<div class="container">
+  <h2 class="text-center m-5">Описание товара</h2>
+  <div class="row g-3 row-cols-1 row-cols-sm-2 row-cols-md-3">
+    <div class="col-lg-5 mb-3 m-auto">
+      <div class="card shadow-sm">
+        <a href="{{ product.image }}" class="open-popup-link">
+          <img src="{{ product.image }}" alt="Детокс чай лайм" class="img-responsive bd-placeholder-img card-img-top w-100">
+        </a>
+        <div class="card-body">
+          <div class="card-text">
+            <h4>{{product.title}}</h4>
+            <div class="text-dark">{{ product.description }}</div>
+          </div>
+          <div class="card-body d-flex justify-content-sm-between align-items-center">
+            <button class="btn btn-primary mt-3 btn-sm col-5" routerLink="/order" [queryParams]="{product: product.title}">Купить</button>
+            <div class="card-price">{{ product.price }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

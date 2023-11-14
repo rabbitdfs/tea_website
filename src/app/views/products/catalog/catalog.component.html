@@ -1,0 +1,23 @@
+<div class="container">
+  <h2 class="text-center m-5">Наши чайные колекции</h2>
+  <div class="row g-3 row-cols-1 row-cols-sm-2 row-cols-md-3">
+    <div class="col-lg-4 mb-3" *ngFor="let product of products">
+      <div class="card shadow-sm">
+        <a href="{{ product.image }}" class="open-popup-link">
+          <img src="{{ product.image }}" alt="Детокс чай лайм" class="img-responsive bd-placeholder-img card-img-top w-100">
+        </a>
+        <div class="card-body">
+          <div class="card-text">
+            <h4>{{product.title}}</h4>
+            <div class="text-dark">{{ product.description | cardDescripionValid }}</div>
+          </div>
+          <button class="btn btn-primary mt-3 btn-sm col-5" type="button" [routerLink]="['/catalog', product.id]">Подробнее</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="loading" class="loader-bg">
+    <div class="loader"></div>
+  </div>
+</div>

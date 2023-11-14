@@ -1,0 +1,101 @@
+<div class="container " id="orderForm" *ngIf="!completeOrder">
+  <div class="mx-auto col-lg-6">
+    <h2 class="text-center m-5 ">Сделать заказ</h2>
+    <form [formGroup]="formValues" novalidate>
+      <div class="row">
+        <div class="mb-3 col-4">
+          <label for="nameForm" class="form-label">Имя</label>
+          <input type="text" class="form-control" id="nameForm" name="nameForm" formControlName="name" required>
+
+          <div *ngIf="formValues.get('name')?.invalid && (formValues.get('name')?.touched || formValues.get('name')?.dirty)">
+            <div class="invalid-feedback" *ngIf="formValues.get('name')?.errors?.['required']">
+              Введите имя
+            </div>
+            <div class="invalid-feedback" *ngIf="formValues.get('name')?.errors?.['name'] && formValues.get('name')?.value">
+              Имя введено некорректно
+            </div>
+          </div>
+        </div>
+        <div class="mb-3 col-4">
+          <label for="surnameForm" class="form-label">Фамилия</label>
+          <input type="text" class="form-control" id="surnameForm" name="lastnameForm" formControlName="lastname" required>
+
+          <div *ngIf="formValues.get('lastname')?.invalid && (formValues.get('lastname')?.touched || formValues.get('lastname')?.dirty)">
+            <div class="invalid-feedback" *ngIf="formValues.get('lastname')?.errors?.['required']">
+              Введите фамилию
+            </div>
+            <div class="invalid-feedback" *ngIf="formValues.get('lastname')?.errors?.['name'] && formValues.get('lastname')?.value">
+              Фамилия введена некорректно
+            </div>
+          </div>
+        </div>
+        <div class="mb-3 col-4">
+          <label for="numberForm" class="form-label">Телефон</label>
+          <input type="text" class="form-control" id="numberForm" name="phoneForm" formControlName="phone" required>
+
+          <div *ngIf="formValues.get('phone')?.invalid && (formValues.get('phone')?.touched || formValues.get('phone')?.dirty)">
+            <div class="invalid-feedback" *ngIf="formValues.get('phone')?.errors?.['required']">
+              Введите номер телефона
+            </div>
+            <div class="invalid-feedback" *ngIf="formValues.get('phone')?.errors?.['phone'] && formValues.get('phone')?.value">
+              Номер телефона введена некорректно
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3 col-4">
+          <label for="numberForm" class="form-label">Товар</label>
+          <input type="text" class="form-control" id="productForm" name="productTitleForm"  formControlName="productTitle">
+        </div>
+
+        <div class="mb-3 col-8">
+          <label for="numberForm" class="form-label">Комментарий к заказу</label>
+          <input type="text" class="form-control" id="commentForm" name="commentForm" formControlName="comment">
+        </div>
+
+        <div class="mb-3 col-6">
+          <label for="contryForm" class="form-label">Страна</label>
+          <input type="text" class="form-control" id="contryForm" name="countryForm" formControlName="country" required>
+
+          <div class="invalid-feedback" *ngIf="formValues.get('country')?.invalid && (formValues.get('country')?.touched || formValues.get('country')?.dirty) && formValues.get('country')?.errors?.['required']">
+              Введите страну
+          </div>
+        </div>
+        <div class="mb-3 col-6">
+          <label for="indexForm" class="form-label">Индекс</label>
+          <input type="text" class="form-control" id="indexForm" maxlength="6" name="zipForm" formControlName="zip" required>
+
+          <div *ngIf="formValues.get('zip')?.invalid && (formValues.get('zip')?.touched || formValues.get('zip')?.dirty)">
+            <div class="invalid-feedback" *ngIf="formValues.get('zip')?.errors?.['required']">
+              Введите индекс
+            </div>
+            <div class="invalid-feedback" *ngIf="formValues.get('zip')?.errors?.['zip'] && formValues.get('zip')?.value">
+              Индекс введен некорректно
+            </div>
+          </div>
+        </div>
+        <div class="mb-3 col-12">
+          <label for="adressForm" class="form-label">Адрес</label>
+          <input type="text" class="form-control" id="adressForm" name="addressForm" formControlName="address" required>
+
+          <div *ngIf="formValues.get('address')?.invalid && (formValues.get('address')?.touched || formValues.get('address')?.dirty)">
+            <div class="invalid-feedback" *ngIf="formValues.get('address')?.errors?.['required']">
+              Введите адрес
+            </div>
+            <div class="invalid-feedback" *ngIf="formValues.get('address')?.errors?.['address'] && formValues.get('address')?.value">
+              Адрес введен некорректно
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="order-button d-flex justify-content-sm-between align-items-center">
+        <button class="btn btn-primary mt-3 col-sm-3" id="submBtn" (click)="createOrder()">Отправить</button>
+        <span class="text-danger" *ngIf="orderError">Произошла ошибка. Попробуйте еще раз.</span>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="container text-center d-none" id="thanksgiving" *ngIf="completeOrder">
+  <h1 class="my-5">Спасибо за заказ!</h1>
+</div>

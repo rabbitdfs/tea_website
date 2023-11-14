@@ -1,0 +1,37 @@
+.popup {
+  max-width: 300px;
+  border: 1px solid rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  position: fixed;
+  right: 20px;
+  bottom: -150px;
+  animation: popup 1s linear 1 forwards;
+  z-index: -1;
+}
+
+@keyframes popup {
+  0% {
+  }
+  100% {
+    transform: translateY(-210px);
+    z-index: 1;
+  }
+}
+
+.popup-text {
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.buttons-list {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+

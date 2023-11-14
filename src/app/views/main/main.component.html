@@ -1,0 +1,48 @@
+<div class="container mt-5">
+  <div class="slider">
+    <div class="card border-0">
+      <img src="assets/images/slider-1.png" class="card-img" alt="Чай 1">
+      <div class="card-img-overlay">
+        <div class="row h-100 align-items-center">
+          <div class="col-1"></div>
+          <div class="col-10">
+            <p class="card1 h1 card-title mb-5">Скидки на травяные чаи</p>
+            <div class="card-text mb-5" id="crd">Узнай подробности, заполнив заявку</div>
+            <button class="btn btn-primary btn-sm col-sm-3 rounded-0" type="submit">Заказать</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="mx-auto col-lg-8">
+    <h2 class="m-5 text-center">Ответы на часто задаваемые вопросы</h2>
+
+    <!-- Первый аккордеон -->
+    <div ngbAccordion [closeOthers]="true">
+      <div ngbAccordionItem *ngFor="let question of questions">
+        <h2 ngbAccordionHeader>
+          <button ngbAccordionButton class="accordion-button collapsed btn-primary rounded border-0 bg-primary text-light form-control p-2">{{ question.title }}</button>
+        </h2>
+        <div ngbAccordionCollapse>
+          <div ngbAccordionBody class="m-3">
+            {{ question.text }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="popup" *ngIf="popupTimer">
+  <div class="popup-text">
+    Посмотрите наши чайные коллекции
+  </div>
+  <div class="buttons-list">
+    <button class="btn btn-success btn-sm p-2 w-30" (click)="navigateCatalog()" type="button">Смотреть</button>
+    <button class="btn btn-danger btn-sm p-2 w-25" (click)="closePopup()" type="button">Нет</button>
+  </div>
+</div>
